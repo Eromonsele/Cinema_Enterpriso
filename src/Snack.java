@@ -1,5 +1,7 @@
 /*
- * 
+ * @author Eromonsele Okhilua
+ * @version 1.0.2
+ * @date 11-02-2017
  */
 public class Snack {
 	private String snackName;

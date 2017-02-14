@@ -63,6 +63,7 @@ public class Theater {
 		return movieCatalog;
 	}
 
+	// Take this out
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
