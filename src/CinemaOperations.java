@@ -4,6 +4,7 @@ public class CinemaOperations {
     
     Theater theater;
     private ArrayList<Theater> theaters;
+    private ArrayList<String> receipts;
 
     public CinemaOperations() {        
         theaters = new ArrayList<Theater>();
