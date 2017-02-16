@@ -18,7 +18,7 @@ public class Movie {
 	private String movieName;
 	private double moviePrice;
 	private String ageRestrictions;
-	private HashMap<String, ArrayList<String>> moviePreview;
+	private HashMap<String, ArrayList<String>> movieDate;
 
 	/*
 	 * Initialize the movie object
@@ -67,7 +67,7 @@ public class Movie {
 	 * @return the moviePreview
 	 */
 	public HashMap<String, ArrayList<String>> getMoviePreview() {
-		return moviePreview;
+		return movieDate;
 	}
 
 	/**
@@ -75,6 +75,6 @@ public class Movie {
 	 *            the moviePreview to set
 	 */
 	public void setMoviePreview(HashMap<String, ArrayList<String>> moviePreview) {
-		this.moviePreview = moviePreview;
+		this.movieDate = moviePreview;
 	}
 }
