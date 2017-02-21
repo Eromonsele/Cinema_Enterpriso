@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class MainUI extends JFrame {
 
@@ -40,10 +41,25 @@ public class MainUI extends JFrame {
 		
 		JPanel cinemaTitle = new JPanel();
 		contentPane.add(cinemaTitle, BorderLayout.NORTH);
+		cinemaTitle.setLayout(new BorderLayout(0, 0));
 		
-		JLabel cinemaLabel = new JLabel("Cineplex");
+		JLabel cinemaLabel = new JLabel("Odeon Cineplex");
+		cinemaLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		cinemaLabel.setFont(new Font("Myriad Pro", Font.PLAIN, 25));
-		cinemaTitle.add(cinemaLabel);
+		cinemaTitle.add(cinemaLabel, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		cinemaTitle.add(lblNewLabel, BorderLayout.SOUTH);
+		
+		JPanel Centralpanel = new JPanel();
+		contentPane.add(Centralpanel, BorderLayout.CENTER);
+		
+		JPanel South_panel = new JPanel();
+		contentPane.add(South_panel, BorderLayout.SOUTH);
+		
+		JLabel lblNewLabel_1 = new JLabel("Made by Eromonsele Okhilua");
+		South_panel.add(lblNewLabel_1);
 	}
 
 }
