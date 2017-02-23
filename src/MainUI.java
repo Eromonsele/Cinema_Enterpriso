@@ -43,6 +43,7 @@ public class MainUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainUI() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 495, 401);
 		contentPane = new JPanel();
@@ -130,7 +131,7 @@ public class MainUI extends JFrame {
 		
 		JPanel movie_info = new JPanel();
 		movie_info.setBorder(new TitledBorder(null, "Movie Info", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		movie_info.setBounds(272, 0, 197, 270);
+		movie_info.setBounds(272, 0, 213, 270);
 		Centralpanel.add(movie_info);
 		movie_info.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		

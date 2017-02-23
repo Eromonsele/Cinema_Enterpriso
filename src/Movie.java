@@ -18,16 +18,23 @@ public class Movie {
 	private String movieName;
 	private double moviePrice;
 	private String ageRestrictions;
-	private HashMap<String, ArrayList<String>> movieDate;
+	private String movieDate;
+	private String movieTime;
+	private String theaters;
+	private int availableTickets;
 
 	/*
 	 * Initialize the movie object
 	 */
-	public Movie(String movieName, double moviePrice, String ageRestrictions) {
+	public Movie(String movieName, double moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
 		this.movieName = movieName;
 		this.moviePrice = moviePrice;
 		this.ageRestrictions = ageRestrictions;
-		setMoviePreview(new HashMap<>());
+		this.movieDate = movieDate;
+		this.movieTime = movieTime;
+		this.availableTickets = availableTickets;
+		this.theaters = theaters;
+		
 	}
 
 	/**
@@ -66,15 +73,20 @@ public class Movie {
 	/**
 	 * @return the moviePreview
 	 */
-	public HashMap<String, ArrayList<String>> getMoviePreview() {
+	public String getMoviePreview() {
 		return movieDate;
+	}	
+
+	public String getTheaters() {
+		return theaters;
+	}	
+
+	public int getAvailableTickets() {
+		return availableTickets;
 	}
 
-	/**
-	 * @param moviePreview
-	 *            the moviePreview to set
-	 */
-	public void setMoviePreview(HashMap<String, ArrayList<String>> moviePreview) {
-		this.movieDate = moviePreview;
+	public String getMovieTime() {
+		return movieTime;
 	}
+	
 }
