@@ -1,4 +1,3 @@
-package testTheory;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,13 +17,7 @@ public class Main {
 		Movie movie;
 
 		try {
-			/*
-			 * InputStream file = new FileInputStream("fileMovie.txt");
-			 * InputStreamReader isr = new InputStreamReader(file,
-			 * Charset.forName("UTF-8")); BufferedReader br = new
-			 * BufferedReader(isr);
-			 */
-
+		
 			Scanner input = new Scanner(new File("fileMovie.txt"));
 			// while((line = br.readLine()) != null){
 			while (input.hasNextLine()) {
