@@ -25,10 +25,12 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 
 public class MainUI extends JFrame {
 
 	private JPanel contentPane;
+	CinemaOperations cinemaOperations;
 
 	/**
 	 * Launch the application.
@@ -50,33 +52,10 @@ public class MainUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainUI() {
-
-		ArrayList<Movie> movies = new ArrayList<Movie>();
-
-		try {
-			String line = null;
-			Scanner input = new Scanner(new File("fileMovie.txt"));
-			// while((line = br.readLine()) != null){
-			while (input.hasNextLine()) {
-				if ((line = input.nextLine()) != null) {
-					String[] word = line.split(";");
-					String mN = word[0];
-					double mP = Double.parseDouble(word[1]);
-					String aR = word[2];
-					String mD = word[3];
-					String mT = word[4];
-					String theatre = word[5];
-					int aT = Integer.parseInt(word[6]);
-
-					movies.add(new Movie(mN, mP, aR, mD, mT, theatre, aT));
-				}
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
+		cinemaOperations = new CinemaOperations();
+		cinemaOperations.addMovies();
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 495, 401);
@@ -112,16 +91,9 @@ public class MainUI extends JFrame {
 		panel.add(lblSelectAMovie);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(96, 5, 155, 20);
-		// comboBox.setModel(new DefaultComboBoxModel(new String[] {"sele is a
-		// great guy"}));
-		// comboBox.setModel(new DefaultComboBoxModel(new String[] {"sele is a
-		// great guy"}));
-		String[] wordMovie = new String[movies.size()];
-		for (int i = 0; i < movies.size(); i++) {
-			wordMovie[i] = movies.get(i).getMovieName();
-		}
-		comboBox.setModel(new DefaultComboBoxModel(wordMovie));
+		comboBox.setBounds(96, 5, 155, 20);		
+		
+		comboBox.setModel(new DefaultComboBoxModel(cinemaOperations.displayMovieName()));
 
 		panel.add(comboBox);
 
@@ -144,18 +116,17 @@ public class MainUI extends JFrame {
 				JComboBox comboBox = (JComboBox) event.getSource();
 
 				Object selected = comboBox.getSelectedItem();
-				if (selected.toString().equals(movies.get(comboBox.getSelectedIndex()).getMovieName())) {
-					for (int i = 0; i < movies.size(); i++) {
-						wordMovie[i] = movies.get(comboBox.getSelectedIndex()).getMoviePreview();
-					}
-					comboBox_2.setModel(new DefaultComboBoxModel(wordMovie));
+				if (selected.toString().equals(cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMovieName())) {
+					//for (int i = 0; i < cinemaOperations.getMovies().size(); i++) {
+						
+						//wordMovie[i] = cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMoviePreview();
+					//}
+					comboBox_2.setModel(new DefaultComboBoxModel(cinemaOperations.displayMovieDate(comboBox.getSelectedIndex())));
+					System.out.println("Drag queen");
 				}
 			}
 		});
-		// comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"19th
-		// December 2017", "19th December 2017", "19th December 2017", "19th
-		// December 2018", "19th December 2017", "19th December 2017", "19th
-		// December 2018"}));
+		
 		comboBox_2.setBounds(93, 21, 156, 20);
 		panel_1.add(comboBox_2);
 
@@ -196,6 +167,12 @@ public class MainUI extends JFrame {
 		movie_info.setBounds(272, 0, 213, 270);
 		Centralpanel.add(movie_info);
 		movie_info.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBackground(Color.LIGHT_GRAY);
+		movie_info.add(textArea);
+		textArea.setText(cinemaOperations.movieInfo());
 
 		JPanel footer = new JPanel();
 		contentPane.add(footer, BorderLayout.SOUTH);
