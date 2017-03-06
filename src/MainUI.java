@@ -52,10 +52,10 @@ public class MainUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainUI() {
-		
+
 		cinemaOperations = new CinemaOperations();
 		cinemaOperations.addMovies();
-		
+
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 495, 401);
@@ -91,8 +91,8 @@ public class MainUI extends JFrame {
 		panel.add(lblSelectAMovie);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(96, 5, 155, 20);		
-		
+		comboBox.setBounds(96, 5, 155, 20);
+
 		comboBox.setModel(new DefaultComboBoxModel(cinemaOperations.displayMovieName()));
 
 		panel.add(comboBox);
@@ -116,17 +116,20 @@ public class MainUI extends JFrame {
 				JComboBox comboBox = (JComboBox) event.getSource();
 
 				Object selected = comboBox.getSelectedItem();
-				if (selected.toString().equals(cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMovieName())) {
-					//for (int i = 0; i < cinemaOperations.getMovies().size(); i++) {
-						
-						//wordMovie[i] = cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMoviePreview();
-					//}
-					comboBox_2.setModel(new DefaultComboBoxModel(cinemaOperations.displayMovieDate(comboBox.getSelectedIndex())));
-					System.out.println("Drag queen");
+				if (selected.toString()
+						.equals(cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMovieName())) {
+					// for (int i = 0; i < cinemaOperations.getMovies().size();
+					// i++) {
+
+					// wordMovie[i] =
+					// cinemaOperations.getMovies().get(comboBox.getSelectedIndex()).getMoviePreview();
+					// }
+					comboBox_2.setModel(new DefaultComboBoxModel(
+							new String[] { cinemaOperations.displayMovieDate(comboBox.getSelectedIndex()) }));
 				}
 			}
 		});
-		
+
 		comboBox_2.setBounds(93, 21, 156, 20);
 		panel_1.add(comboBox_2);
 
@@ -167,12 +170,6 @@ public class MainUI extends JFrame {
 		movie_info.setBounds(272, 0, 213, 270);
 		Centralpanel.add(movie_info);
 		movie_info.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBackground(Color.LIGHT_GRAY);
-		movie_info.add(textArea);
-		textArea.setText(cinemaOperations.movieInfo());
 
 		JPanel footer = new JPanel();
 		contentPane.add(footer, BorderLayout.SOUTH);

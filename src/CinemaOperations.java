@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 public class CinemaOperations {
 
-	private ArrayList<Movie> movies;	
-	
+	private ArrayList<Movie> movies;
 
 	public CinemaOperations() {
-		movies = new ArrayList<Movie>();		
+		movies = new ArrayList<Movie>();
 	}
 
 	public void addMovies() {
@@ -51,20 +50,13 @@ public class CinemaOperations {
 		}
 		return container;
 	}
-	
-	public String[] displayMovieDate(int index){
-		String[] container = new String[getMovies().size()];		
-		container[0] = getMovies().get(index).getMoviePreview();		
-		return container;
+
+	public String displayMovieDate(int index) {
+		return getMovies().get(index).getMoviePreview();
 	}
 
-	public String[] displayMovieTime(int index){
-		String[] container = new String[getMovies().size()];
-		container[0] = getMovies().get(index).getMovieTime();
-		return container;
+	public String displayMovieTime(int index) {		 
+		return getMovies().get(index).getMovieTime();
 	}
 	
-	public String movieInfo(){
-		return "" + movies;		
-	}
 }
