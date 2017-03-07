@@ -5,44 +5,16 @@ import java.util.Scanner;
 
 public class CinemaOperations {
 
-	private ArrayList<Movie> movies;
+	private Theater[] theaterList;
 
 	public CinemaOperations() {
-		movies = new ArrayList<Movie>();
+		 theaterList = new Theater[10];
 	}
+	
 
-	public void addMovies() {
-
-		try {
-			String line = null;
-			Scanner input = new Scanner(new File("fileMovie.txt"));
-
-			while (input.hasNextLine()) {
-				if ((line = input.nextLine()) != null) {
-					String[] word = line.split(";");
-					String mN = word[0];
-					double mP = Double.parseDouble(word[1]);
-					String aR = word[2];
-					String mD = word[3];
-					String mT = word[4];
-					String theatre = word[5];
-					int aT = Integer.parseInt(word[6]);
-
-					movies.add(new Movie(mN, mP, aR, mD, mT, theatre, aT));
-				}
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public void addTheater(){
+		
 	}
-
-	public ArrayList<Movie> getMovies() {
-		return movies;
-	}
-
 	public String[] displayMovieName() {
 		String[] container = new String[getMovies().size()];
 		for (int i = 0; i < getMovies().size(); i++) {
@@ -58,5 +30,7 @@ public class CinemaOperations {
 	public String displayMovieTime(int index) {		 
 		return getMovies().get(index).getMovieTime();
 	}
+	
+	public String display
 	
 }
