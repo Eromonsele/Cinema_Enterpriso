@@ -1,16 +1,24 @@
+
+//import statements
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+ * 
+ * @author Eromonsele Okhilua
+ * @version	1.0.2 * 
+ */
 public class Theater {
 	private String theaterName;
-	private
+	private int theaterSeats;
 	private ArrayList<Movie> moviesList;
 
-	public Theater() {
+	public Theater(String theaterName, int theaterSeats) {
+		this.theaterName = theaterName;
+		this.theaterSeats = theaterSeats;
 		moviesList = new ArrayList<Movie>();
-
 	}
 
 	/**
@@ -27,6 +35,10 @@ public class Theater {
 		return theaterName;
 	}
 
+	public int getTheaterSeats() {
+		return theaterSeats;
+	}
+
 	public void addMovies() {
 
 		try {
@@ -41,8 +53,8 @@ public class Theater {
 					String aR = word[2];
 					String mD = word[3];
 					String mT = word[4];
-					String theatre = word[5];
-					int aT = Integer.parseInt(word[6]);
+					String theatre = theaterName;
+					int aT = theaterSeats;
 
 					moviesList.add(new Movie(mN, mP, aR, mD, mT, theatre, aT));
 				}
@@ -54,4 +66,5 @@ public class Theater {
 		}
 
 	}
+
 }

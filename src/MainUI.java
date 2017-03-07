@@ -54,11 +54,11 @@ public class MainUI extends JFrame {
 	public MainUI() {
 
 		cinemaOperations = new CinemaOperations();
-		cinemaOperations.addMovies();
+		cinemaOperations.addTheater("Theater A", 200);
 
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 495, 401);
+		setBounds(100, 100, 542, 595);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -82,16 +82,16 @@ public class MainUI extends JFrame {
 		Centralpanel.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 273, 281);
+		panel.setBounds(0, 0, 273, 329);
 		Centralpanel.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblSelectAMovie = new JLabel("Select a movie:");
-		lblSelectAMovie.setBounds(5, 8, 73, 14);
+		lblSelectAMovie.setBounds(13, 57, 73, 14);
 		panel.add(lblSelectAMovie);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(96, 5, 155, 20);
+		comboBox.setBounds(96, 54, 155, 20);
 
 		comboBox.setModel(new DefaultComboBoxModel(cinemaOperations.displayMovieName()));
 
@@ -99,12 +99,12 @@ public class MainUI extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Movie Booking", TitledBorder.LEFT, TitledBorder.TOP, null, null));
-		panel_1.setBounds(4, 33, 259, 99);
+		panel_1.setBounds(5, 82, 259, 97);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
 		JLabel lblSelectDate = new JLabel("Select Date :");
-		lblSelectDate.setBounds(10, 22, 77, 14);
+		lblSelectDate.setBounds(10, 30, 77, 14);
 		panel_1.add(lblSelectDate);
 
 		JComboBox comboBox_2 = new JComboBox();
@@ -130,21 +130,21 @@ public class MainUI extends JFrame {
 			}
 		});
 
-		comboBox_2.setBounds(93, 21, 156, 20);
+		comboBox_2.setBounds(90, 27, 156, 20);
 		panel_1.add(comboBox_2);
 
 		JLabel lblSelectTime = new JLabel("Select Time:");
-		lblSelectTime.setBounds(10, 58, 70, 14);
+		lblSelectTime.setBounds(10, 72, 70, 14);
 		panel_1.add(lblSelectTime);
 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "9:90 pm", "10:34 pm" }));
-		comboBox_1.setBounds(94, 52, 155, 20);
+		comboBox_1.setBounds(91, 69, 155, 20);
 		panel_1.add(comboBox_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Ticket Pricing", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(5, 131, 258, 139);
+		panel_2.setBounds(5, 179, 258, 150);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
@@ -164,12 +164,23 @@ public class MainUI extends JFrame {
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(198, 21, 39, 20);
 		panel_2.add(spinner);
+		
+		JLabel lblSelectATheater = new JLabel("Select a Theater:");
+		lblSelectATheater.setBounds(13, 17, 84, 14);
+		panel.add(lblSelectATheater);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setBounds(96, 14, 155, 20);
+		panel.add(comboBox_3);
 
 		JPanel movie_info = new JPanel();
-		movie_info.setBorder(new TitledBorder(null, "Movie Info", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		movie_info.setBounds(272, 0, 213, 270);
+		movie_info.setBorder(null);
+		movie_info.setBounds(272, 0, 254, 329);
 		Centralpanel.add(movie_info);
 		movie_info.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+		JLabel lblImagePic = new JLabel("gdffgh");
+		movie_info.add(lblImagePic);
 
 		JPanel footer = new JPanel();
 		contentPane.add(footer, BorderLayout.SOUTH);
