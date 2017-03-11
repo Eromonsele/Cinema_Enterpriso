@@ -1,44 +1,55 @@
+import java.util.ArrayList;
+
 public class CinemaOperations {
 
-	private Theater[] theaterList;
-	Theater theater;
+	private ArrayList<Theater> theaters;
 
 	public CinemaOperations() {
-		theaterList = new Theater[10];
+		theaters = new ArrayList<Theater>();
 	}
 
-	public void addTheater(String theaterName, int seats) {
-		for (int i = 0; i < theaterList.length; i++) {
-			theaterList[i] = new Theater(theaterName, seats);
-			theater.addMovies();
+	public ArrayList<Theater> getTheaters() {
+		return theaters;
+	}
+
+	public void addTheater() {
+		for (int i = 0; i < 10; i++) {
+			theaters.add(new Theater("Theater " + (i + 1), 200));
+			theaters.get(i).addMovies();
 		}
-
+		System.out.println(theaters);
 	}
 
-	public String[] displayMovieName() {
-		String[] container = new String[theater.getMoviesList().];
-		for (int i = 0; i < getMovies().size(); i++) {
-			container[i] = getMovies().get(i).getMovieName();
+	public String[] displayTheaterName() {
+		String[] container = new String[theaters.size()];
+		for (int i = 0; i < container.length; i++) {
+			container[i] = theaters.get(i).getTheaterName();
 		}
 		return container;
 	}
-	//
-	// public String displayMovieDate(int index) {
-	// return getMovies().get(index).getMoviePreview();
-	// }
-	//
-	// public String displayMovieTime(int index) {
-	// return getMovies().get(index).getMovieTime();
-	// }
-	//
-	// public String display
 
-	public Theater[] getTheaterList() {
-		return theaterList;
+	public String displayMovieName(int index) {
+		return theaters.get(index).getMoviesList().get(index).getMovieName();
+	}
+
+	public String displayMoviePrice(int index) {
+		return "£" + theaters.get(index).getMoviesList().get(index).getMoviePrice();
+	}
+
+	public String displayAgeRestrictions(int index) {
+		return theaters.get(index).getMoviesList().get(index).getAgeRestrictions();
 	}
 
 	public String displayMovieDate(int index) {
-		return "" + theaterList[index].getMoviesList().get(index).getMoviePreview();
+		return theaters.get(index).getMoviesList().get(index).getMoviePreview();
+	}
+
+	public String displayMovieTime(int index) {
+		return theaters.get(index).getMoviesList().get(index).getMovieTime();
+	}
+
+	public String displayAvailableTickets(int index) {
+		return theaters.get(index).getMoviesList().get(index).getAvailableTickets() + "";
 	}
 
 }
