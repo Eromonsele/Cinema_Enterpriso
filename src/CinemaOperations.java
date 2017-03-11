@@ -17,7 +17,6 @@ public class CinemaOperations {
 			theaters.add(new Theater("Theater " + (i + 1), 200));
 			theaters.get(i).addMovies();
 		}
-		System.out.println(theaters);
 	}
 
 	public String[] displayTheaterName() {
@@ -28,8 +27,12 @@ public class CinemaOperations {
 		return container;
 	}
 
-	public String displayMovieName(int index) {
-		return theaters.get(index).getMoviesList().get(index).getMovieName();
+	public String[] displayMovieName(int index) {
+		String[] container = new String[theaters.get(index).getMoviesList().size()];
+		for (int i = 0; i < container.length; i++) {
+			container[i] = theaters.get(i).getMoviesList().get(i).getMovieName();
+		}
+		return container;
 	}
 
 	public String displayMoviePrice(int index) {
@@ -48,8 +51,12 @@ public class CinemaOperations {
 		return theaters.get(index).getMoviesList().get(index).getMovieTime();
 	}
 
-	public String displayAvailableTickets(int index) {
-		return theaters.get(index).getMoviesList().get(index).getAvailableTickets() + "";
+	public int displayAvailableTickets(int index) {
+		return theaters.get(index).getMoviesList().get(index).getAvailableTickets() ;
+	}
+
+	public String displayMoviePic(int index) {
+		return theaters.get(index).getMoviesList().get(index).getMoviePicture();
 	}
 
 }

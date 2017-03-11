@@ -16,6 +16,7 @@ import java.util.Scanner;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -26,6 +27,11 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
+import java.awt.Rectangle;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JButton;
+import java.awt.CardLayout;
+import javax.swing.JTextPane;
 
 public class MainUI extends JFrame {
 
@@ -61,24 +67,16 @@ public class MainUI extends JFrame {
 		setBounds(100, 100, 579, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		JPanel cinemaTitle = new JPanel();
-		contentPane.add(cinemaTitle, BorderLayout.NORTH);
-		cinemaTitle.setLayout(new BorderLayout(0, 0));
-
-		JLabel cinemaLabel = new JLabel("Odeon Cineplex");
-		cinemaLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cinemaLabel.setFont(new Font("Myriad Pro", Font.PLAIN, 25));
-		cinemaTitle.add(cinemaLabel, BorderLayout.NORTH);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		cinemaTitle.add(lblNewLabel, BorderLayout.SOUTH);
+		JPanel cinemaApp = new JPanel();
+		cinemaApp.setVisible(false);
+		contentPane.setLayout(new CardLayout(0, 0));
+		contentPane.add(cinemaApp, "name_16078629756897");
+		cinemaApp.setLayout(new BorderLayout(0, 0));
 
 		JPanel Centralpanel = new JPanel();
-		contentPane.add(Centralpanel, BorderLayout.CENTER);
+		cinemaApp.add(Centralpanel, BorderLayout.CENTER);
 		Centralpanel.setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -90,12 +88,12 @@ public class MainUI extends JFrame {
 		lblSelectAMovie.setBounds(13, 57, 97, 14);
 		panel.add(lblSelectAMovie);
 
-		JComboBox cmbBxMovieList = new JComboBox();
-		cmbBxMovieList.setBounds(120, 54, 155, 20);
+		JComboBox<String> cmbBxMovieList_1 = new JComboBox<String>();
+		cmbBxMovieList_1.setBounds(120, 54, 155, 20);
 
-		cmbBxMovieList.setModel(new DefaultComboBoxModel());
+		cmbBxMovieList_1.setModel(new DefaultComboBoxModel<String>());
 
-		panel.add(cmbBxMovieList);
+		panel.add(cmbBxMovieList_1);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Movie Booking", TitledBorder.LEFT, TitledBorder.TOP, null, null));
@@ -107,18 +105,17 @@ public class MainUI extends JFrame {
 		lblSelectDate.setBounds(10, 30, 77, 14);
 		panel_1.add(lblSelectDate);
 
-		JComboBox cmbBxMovieDate = new JComboBox();
-		cmbBxMovieDate.setBounds(116, 27, 156, 20);
-		panel_1.add(cmbBxMovieDate);
+		JComboBox<String> cmbBxMovieDate_1 = new JComboBox<String>();
+		cmbBxMovieDate_1.setBounds(116, 27, 156, 20);
+		panel_1.add(cmbBxMovieDate_1);
 
 		JLabel lblSelectTime = new JLabel("Select Time:");
 		lblSelectTime.setBounds(10, 61, 70, 14);
 		panel_1.add(lblSelectTime);
 
-		JComboBox cmbBxMovieTime = new JComboBox();
-		cmbBxMovieTime.setModel(new DefaultComboBoxModel(new String[] { "9:90 pm", "10:34 pm" }));
-		cmbBxMovieTime.setBounds(116, 58, 155, 20);
-		panel_1.add(cmbBxMovieTime);
+		JComboBox<String> cmbBxMovieTime_1 = new JComboBox<String>();
+		cmbBxMovieTime_1.setBounds(116, 58, 155, 20);
+		panel_1.add(cmbBxMovieTime_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Ticket Pricing", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -130,7 +127,7 @@ public class MainUI extends JFrame {
 		lblAdults.setBounds(10, 24, 46, 14);
 		panel_2.add(lblAdults);
 
-		JLabel labelPricing = new JLabel("\u00A35.00");
+		JLabel labelPricing = new JLabel("\u00A30.00");
 		labelPricing.setForeground(Color.CYAN);
 		labelPricing.setBounds(57, 24, 46, 14);
 		panel_2.add(labelPricing);
@@ -140,6 +137,7 @@ public class MainUI extends JFrame {
 		panel_2.add(lblQuantity);
 
 		JSpinner spinner = new JSpinner();
+
 		spinner.setBounds(198, 21, 39, 20);
 		panel_2.add(spinner);
 
@@ -147,93 +145,190 @@ public class MainUI extends JFrame {
 		lblSelectATheater.setBounds(13, 17, 97, 14);
 		panel.add(lblSelectATheater);
 
-		JComboBox cmbBxTheater = new JComboBox();
-		cmbBxTheater.setBounds(120, 14, 155, 20);
-		panel.add(cmbBxTheater);
+		JComboBox<String> cmbBxTheater_1 = new JComboBox<String>();
+		cmbBxTheater_1.setBounds(120, 14, 155, 20);
+		panel.add(cmbBxTheater_1);
 
 		JPanel movie_info = new JPanel();
 		movie_info.setBorder(null);
-		movie_info.setBounds(297, 0, 266, 329);
+		movie_info.setBounds(297, 0, 276, 329);
 		Centralpanel.add(movie_info);
-		movie_info.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		movie_info.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JLabel lblImagePic = new JLabel("gdffgh");
+		lblImagePic.setBounds(new Rectangle(300, 300, 300, 300));
 		movie_info.add(lblImagePic);
 
+		cmbBxMovieList_1.setEnabled(false);
+		cmbBxMovieDate_1.setEnabled(false);
+		cmbBxMovieTime_1.setEnabled(false);
+		spinner.setEnabled(false);
+
+		JButton btnPlaceOrder = new JButton("Place Order");
+		btnPlaceOrder.setBounds(10, 116, 113, 23);
+		panel_2.add(btnPlaceOrder);
+		lblImagePic.setText("");
+		cmbBxTheater_1.setModel(new DefaultComboBoxModel<String>(cinemaOperations.displayTheaterName()));
+
 		JPanel footer = new JPanel();
-		contentPane.add(footer, BorderLayout.SOUTH);
+		cinemaApp.add(footer, BorderLayout.SOUTH);
 
 		JLabel footerlabel = new JLabel("Made by Eromonsele Okhilua");
 		footer.add(footerlabel);
 
-		cmbBxMovieList.setEnabled(false);
-		cmbBxMovieDate.setEnabled(false);
-		cmbBxMovieTime.setEnabled(false);
-		spinner.setEnabled(false);
+		JPanel cinemaTitle = new JPanel();
+		cinemaApp.add(cinemaTitle, BorderLayout.NORTH);
+		cinemaTitle.setLayout(new BorderLayout(0, 0));
 
-		cmbBxTheater.setModel(new DefaultComboBoxModel<String>(cinemaOperations.displayTheaterName()));
+		JLabel cinemaLabel = new JLabel("Odeon Cineplex");
+		cinemaLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		cinemaLabel.setFont(new Font("Myriad Pro", Font.PLAIN, 25));
+		cinemaTitle.add(cinemaLabel, BorderLayout.NORTH);
 
-		cmbBxTheater.addActionListener(new ActionListener() {
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		cinemaTitle.add(lblNewLabel, BorderLayout.SOUTH);
+
+		JPanel PreCheckOut = new JPanel();
+		PreCheckOut.setVisible(false);
+		contentPane.add(PreCheckOut, "name_16078638555846");
+		PreCheckOut.setLayout(null);
+
+		JPanel optionalSnacks = new JPanel();
+		optionalSnacks.setBounds(281, 0, 282, 405);
+		PreCheckOut.add(optionalSnacks);
+
+		JPanel shoppingCartSummary = new JPanel();
+		shoppingCartSummary.setBounds(0, 0, 281, 405);
+		PreCheckOut.add(shoppingCartSummary);
+		shoppingCartSummary.setLayout(new BorderLayout(0, 0));
+
+		JPanel shoppinCart = new JPanel();
+		shoppingCartSummary.add(shoppinCart, BorderLayout.CENTER);
+		shoppinCart.setLayout(null);
+
+		JTextPane shoppingCartInfo = new JTextPane();
+		shoppingCartInfo.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		shoppingCartInfo.setForeground(new Color(0, 0, 255));
+		shoppingCartInfo.setEnabled(false);
+		shoppingCartInfo.setEditable(false);
+		shoppingCartInfo.setText("Huddersfield Cinema");
+		shoppingCartInfo.setBounds(0, 5, 281, 367);
+		shoppinCart.add(shoppingCartInfo);
+
+		JPanel CheckOut = new JPanel();
+		shoppingCartSummary.add(CheckOut, BorderLayout.SOUTH);
+
+		JButton btnPayViaCard = new JButton("Pay Via Card");
+		CheckOut.add(btnPayViaCard);
+
+		JButton btnPayViaCash = new JButton("Pay By Cash");
+		CheckOut.add(btnPayViaCash);
+
+		JPanel Receipt = new JPanel();
+		Receipt.setVisible(false);
+		contentPane.add(Receipt, "name_16078647602490");
+		Receipt.setLayout(new BorderLayout(0, 0));
+
+		shoppingCartInfo.setText(shoppingCartInfo.getText() + "\ndreas ");
+
+		cmbBxTheater_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cmbBxTheater = (JComboBox) event.getSource();
-				Object selected = cmbBxTheater.getSelectedItem();
+				JComboBox<?> cmbBxTheater = (JComboBox<?>) event.getSource();
+				Object selected = cmbBxTheater_1.getSelectedItem();
 
 				if (selected.toString()
 						.equals(cinemaOperations.getTheaters().get(cmbBxTheater.getSelectedIndex()).getTheaterName())) {
-					cmbBxMovieList.setModel(
-							new DefaultComboBoxModel<String>(new String[] { cinemaOperations.displayMovieName(0) }));
-					cmbBxMovieList.setEnabled(true);
+					cmbBxMovieList_1.setModel(new DefaultComboBoxModel<String>(
+							cinemaOperations.displayMovieName(cmbBxTheater.getSelectedIndex())));
+					cmbBxMovieList_1.setEnabled(true);
 				}
 
 			}
 		});
 
-		cmbBxMovieList.addActionListener(new ActionListener() {
+		cmbBxMovieList_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cmbBxMovieList = (JComboBox) event.getSource();
+				JComboBox<?> cmbBxMovieList = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxMovieList.getSelectedItem();
 
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList.getSelectedIndex())
 						.getMoviesList().get(cmbBxMovieList.getSelectedIndex()).getMovieName())) {
-					cmbBxMovieDate.setEnabled(true);
-					cmbBxMovieDate.setModel(
-							new DefaultComboBoxModel<String>(new String[] { cinemaOperations.displayMovieDate(0) }));
+					cmbBxMovieDate_1.setEnabled(true);
+					cmbBxMovieDate_1.setModel(new DefaultComboBoxModel<String>(
+							new String[] { cinemaOperations.displayMovieDate(cmbBxMovieList.getSelectedIndex()) }));
 
+					switch (cmbBxMovieList.getSelectedIndex()) {
+					case 0:
+						lblImagePic.setIcon(new ImageIcon(getClass()
+								.getResource(cinemaOperations.displayMoviePic(cmbBxMovieList.getSelectedIndex()))));
+						break;
+					case 1:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource(cinemaOperations.displayMoviePic(1))));
+						break;
+					case 2:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource(cinemaOperations.displayMoviePic(2))));
+						break;
+					case 3:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource(cinemaOperations.displayMoviePic(3))));
+						break;
+					case 4:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource(cinemaOperations.displayMoviePic(4))));
+						break;
+					case 5:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource(cinemaOperations.displayMoviePic(5))));
+						break;
+					default:
+						lblImagePic.setIcon(new ImageIcon(getClass().getResource("")));
+						break;
+					}
 				}
 			}
 		});
 
-		cmbBxMovieDate.addActionListener(new ActionListener() {
+		cmbBxMovieDate_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cmbBxMovieDate = (JComboBox) event.getSource();
+				JComboBox<?> cmbBxMovieDate = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxMovieDate.getSelectedItem();
 
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieDate.getSelectedIndex())
-						.getMoviesList().get(cmbBxMovieDate.getSelectedIndex()).getMoviePreview())) {
-					cmbBxMovieTime.setEnabled(true);
-					cmbBxMovieTime.setModel(
-							new DefaultComboBoxModel<String>(new String[] { cinemaOperations.displayMovieTime(0) }));
+						.getMoviesList().get(cmbBxMovieDate.getSelectedIndex()).getMoviePreview())) {					
+					cmbBxMovieTime_1.setModel(new DefaultComboBoxModel<String>(new String[] { cinemaOperations.displayMovieTime(2) }));
+					cmbBxMovieTime_1.setEnabled(true);
 				}
 			}
 		});
 
-		cmbBxMovieTime.addActionListener(new ActionListener() {
+		cmbBxMovieTime_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cmbBxMovieTime = (JComboBox) event.getSource();
+				JComboBox<?> cmbBxMovieTime = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxMovieTime.getSelectedItem();
 
-				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieTime.getSelectedIndex()).getMoviesList().get(cmbBxMovieTime.getSelectedIndex()).getMovieTime())) {
+				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieTime.getSelectedIndex())
+						.getMoviesList().get(cmbBxMovieTime.getSelectedIndex()).getMovieTime())) {
+					spinner.setModel(new SpinnerNumberModel(0, 0,
+							cinemaOperations.displayAvailableTickets(cmbBxMovieTime.getSelectedIndex()), 1));
 					spinner.setEnabled(true);
-					labelPricing.setText(cinemaOperations.displayMoviePrice(0));
+					labelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieTime.getSelectedIndex()));
+
 				}
+			}
+		});
+
+		btnPlaceOrder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cinemaApp.setVisible(false);
+				PreCheckOut.setVisible(true);
 			}
 		});
 	}

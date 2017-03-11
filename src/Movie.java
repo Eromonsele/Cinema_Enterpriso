@@ -22,11 +22,12 @@ public class Movie {
 	private String movieTime;
 	private String theaters;
 	private int availableTickets;
+	private String moviePicture;
 
 	/*
 	 * Initialize the movie object
 	 */
-	public Movie(String movieName, double moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
+	public Movie(String moviePicture,String movieName, double moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
 		this.movieName = movieName;
 		this.moviePrice = moviePrice;
 		this.ageRestrictions = ageRestrictions;
@@ -34,6 +35,7 @@ public class Movie {
 		this.movieTime = movieTime;
 		this.availableTickets = availableTickets;
 		this.theaters = theaters;
+		this.moviePicture = moviePicture;
 		
 	}
 
@@ -64,12 +66,6 @@ public class Movie {
 		return ageRestrictions;
 	}
 
-	@Override
-	public String toString() {
-		return ("Movie name: " + getMovieName() + "\nPrice: " + getMoviePrice() + "\nAge Restrictions: "
-				+ getAgeRestrictions() + "\nMovie Times: " + getMoviePreview() + "\n");
-	}
-
 	/**
 	 * @return the moviePreview
 	 */
@@ -87,6 +83,13 @@ public class Movie {
 
 	public String getMovieTime() {
 		return movieTime;
+	}
+
+	/**
+	 * @return the moviePicture
+	 */
+	public String getMoviePicture() {
+		return moviePicture;
 	}
 	
 }

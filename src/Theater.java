@@ -53,10 +53,11 @@ public class Theater {
 					String aR = word[2];
 					String mD = word[3];
 					String mT = word[4];
+					String moviePic = word[5];
 					String theatre = theaterName;
 					int aT = theaterSeats;
 
-					moviesList.add(new Movie(mN, mP, aR, mD, mT, theatre, aT));
+					moviesList.add(new Movie(moviePic,mN, mP, aR, mD, mT, theatre, aT));
 				}
 			}
 
