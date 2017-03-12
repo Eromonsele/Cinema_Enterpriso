@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CinemaOperations {
 
@@ -13,6 +14,7 @@ public class CinemaOperations {
 	}
 
 	public void addTheater() {
+		Random rand = new Random();
 		for (int i = 0; i < 10; i++) {
 			theaters.add(new Theater("Theater " + (i + 1), 200));
 			theaters.get(i).addMovies();

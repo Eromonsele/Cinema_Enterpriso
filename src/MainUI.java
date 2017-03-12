@@ -261,7 +261,8 @@ public class MainUI extends JFrame {
 					cmbBxMovieDate_1.setEnabled(true);
 					cmbBxMovieDate_1.setModel(new DefaultComboBoxModel<String>(
 							new String[] { cinemaOperations.displayMovieDate(cmbBxMovieList.getSelectedIndex()) }));
-
+					// cmbBxMovieTime_1.setEnabled(true);
+					//
 					switch (cmbBxMovieList.getSelectedIndex()) {
 					case 0:
 						lblImagePic.setIcon(new ImageIcon(getClass()
@@ -294,13 +295,14 @@ public class MainUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				JComboBox<?> cmbBxMovieDate = (JComboBox<?>) event.getSource();
+				JComboBox cmbBxMovieDate = (JComboBox) event.getSource();
 				Object selected = cmbBxMovieDate.getSelectedItem();
 
-				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieDate.getSelectedIndex())
-						.getMoviesList().get(cmbBxMovieDate.getSelectedIndex()).getMoviePreview())) {					
-					cmbBxMovieTime_1.setModel(new DefaultComboBoxModel<String>(new String[] { cinemaOperations.displayMovieTime(2) }));
+				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex())
+						.getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getMoviePreview())) {
 					cmbBxMovieTime_1.setEnabled(true);
+					cmbBxMovieTime_1.setModel(new DefaultComboBoxModel<String>(
+							new String[] { cinemaOperations.displayMovieTime(cmbBxMovieList_1.getSelectedIndex()) }));
 				}
 			}
 		});
@@ -312,12 +314,12 @@ public class MainUI extends JFrame {
 				JComboBox<?> cmbBxMovieTime = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxMovieTime.getSelectedItem();
 
-				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieTime.getSelectedIndex())
-						.getMoviesList().get(cmbBxMovieTime.getSelectedIndex()).getMovieTime())) {
+				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex())
+						.getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getMovieTime())) {
 					spinner.setModel(new SpinnerNumberModel(0, 0,
-							cinemaOperations.displayAvailableTickets(cmbBxMovieTime.getSelectedIndex()), 1));
+							cinemaOperations.displayAvailableTickets(cmbBxMovieList_1.getSelectedIndex()), 1));
 					spinner.setEnabled(true);
-					labelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieTime.getSelectedIndex()));
+					labelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieList_1.getSelectedIndex()));
 
 				}
 			}
