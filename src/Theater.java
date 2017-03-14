@@ -57,7 +57,8 @@ public class Theater {
 					String theatre = theaterName;
 					int aT = theaterSeats;
 
-					moviesList.add(new Movie(moviePic,mN, mP, aR, mD, mT, theatre, aT));
+					getMoviesList().add(new Movie(moviePic,mN, mP, aR, mD, mT, theatre, aT));
+					
 				}
 			}
 
