@@ -178,6 +178,55 @@ public class MainUI extends JFrame {
 		JPanel optionalSnacks = new JPanel();
 		optionalSnacks.setBounds(281, 0, 282, 405);
 		PreCheckOut.add(optionalSnacks);
+		optionalSnacks.setLayout(null);
+		
+		JLabel lblPickASnack = new JLabel("Pick a Snack (Optional):");
+		lblPickASnack.setBounds(10, 3, 197, 14);
+		optionalSnacks.add(lblPickASnack);
+		
+		JComboBox cnbBxSnacksList = new JComboBox();
+		cnbBxSnacksList.setBounds(10, 28, 251, 20);
+		optionalSnacks.add(cnbBxSnacksList);
+		
+		JLabel lblPickADrink = new JLabel("Pick a Drink (Optional):");
+		lblPickADrink.setBounds(10, 95, 168, 14);
+		optionalSnacks.add(lblPickADrink);
+		
+		JComboBox cmbBxDrinksList = new JComboBox();
+		cmbBxDrinksList.setBounds(10, 121, 251, 20);
+		optionalSnacks.add(cmbBxDrinksList);
+		
+		JButton btnAddCart = new JButton("Add Cart");
+		btnAddCart.setBounds(177, 58, 84, 20);
+		optionalSnacks.add(btnAddCart);
+		
+		JLabel lblPrice = new JLabel("Price : ");
+		lblPrice.setBounds(10, 61, 46, 14);
+		optionalSnacks.add(lblPrice);
+		
+		JLabel label_1 = new JLabel("Price : ");
+		label_1.setBounds(10, 152, 46, 14);
+		optionalSnacks.add(label_1);
+		
+		JLabel lblSnacksPrice = new JLabel("\u00A30.00");
+		lblSnacksPrice.setBounds(47, 61, 46, 14);
+		optionalSnacks.add(lblSnacksPrice);
+		
+		JButton btnAddCart_1 = new JButton("Add Cart");
+		btnAddCart_1.setBounds(177, 149, 84, 20);
+		optionalSnacks.add(btnAddCart_1);
+		
+		JLabel lblDrinksPrice = new JLabel("\u00A30.00");
+		lblDrinksPrice.setBounds(47, 152, 46, 14);
+		optionalSnacks.add(lblDrinksPrice);
+		
+		JLabel lblDoYouWish = new JLabel("Do you wish to have a waiter service?");
+		lblDoYouWish.setBounds(10, 211, 251, 14);
+		optionalSnacks.add(lblDoYouWish);
+		
+		JButton btnWaiterService = new JButton("Yes");
+		btnWaiterService.setBounds(10, 236, 64, 23);
+		optionalSnacks.add(btnWaiterService);
 
 		JPanel shoppingCartSummary = new JPanel();
 		shoppingCartSummary.setBounds(0, 0, 281, 405);
@@ -187,16 +236,12 @@ public class MainUI extends JFrame {
 		JPanel shoppinCart = new JPanel();
 		shoppingCartSummary.add(shoppinCart, BorderLayout.CENTER);
 		shoppinCart.setLayout(null);
-
-		JTextPane shoppingCartInfo = new JTextPane();
-		shoppingCartInfo.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		shoppingCartInfo.setForeground(new Color(0, 0, 255));
-		shoppingCartInfo.setEnabled(false);
-		shoppingCartInfo.setEditable(false);
-		shoppingCartInfo.setText(
-				"---------------------------------\r\nHuddersfield Cinema\r\n---------------------------------\r\n");
-		shoppingCartInfo.setBounds(0, 5, 281, 367);
-		shoppinCart.add(shoppingCartInfo);
+		
+		JLabel lblShoppingCart = new JLabel("Huddersfield Cinema\r\n");
+		lblShoppingCart.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblShoppingCart.setBounds(new Rectangle(0, 0, 100, 100));
+		lblShoppingCart.setBounds(0, 0, 281, 22);
+		shoppinCart.add(lblShoppingCart);
 
 		JPanel CheckOut = new JPanel();
 		shoppingCartSummary.add(CheckOut, BorderLayout.SOUTH);
