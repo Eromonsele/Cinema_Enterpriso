@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Movie {
 
 	private String movieName;
-	private double moviePrice;
+	private float moviePrice;
 	private String ageRestrictions;
 	private String movieDate;
 	private String movieTime;
@@ -27,7 +27,7 @@ public class Movie {
 	/*
 	 * Initialize the movie object
 	 */
-	public Movie(String moviePicture,String movieName, double moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
+	public Movie(String moviePicture,String movieName, float moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
 		this.movieName = movieName;
 		this.moviePrice = moviePrice;
 		this.ageRestrictions = ageRestrictions;
@@ -44,7 +44,7 @@ public class Movie {
 	 * 
 	 * @return the moviePrice
 	 */
-	public double getMoviePrice() {
+	public float getMoviePrice() {
 		return moviePrice;
 	}
 

@@ -5,9 +5,9 @@
  */
 public class Snack {
 	private String snackName;
-	private double snackPrice;
+	private float snackPrice;
 
-	public Snack(String snackName, double snackPrice) {
+	public Snack(String snackName, float snackPrice) {
 		this.snackName = snackName;
 		this.snackPrice = snackPrice;
 	}
@@ -22,7 +22,7 @@ public class Snack {
 	/**
 	 * @return the snackPrice
 	 */
-	public double getSnackPrice() {
+	public float getSnackPrice() {
 		return snackPrice;
 	}
 

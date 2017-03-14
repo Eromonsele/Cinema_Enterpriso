@@ -1,5 +1,5 @@
-Sing;8.15;PG;19th December 2016;2:15pm;Sing.jpg
-Logan;2.15;PG;29th December 2016;4:15pm;Logan.jpg
-Moonlight;20.15;PG;19th December 2016;6:15pm;Moonlight.jpg
-Get Out;2.15;PG;19th December 2016;2:15pm;GetOut.jpg
-Collateral Beauty;2.15;PG;19th December 2016;2:65pm;Beauty.jpg
+Sing;8.00;U;19th December 2016;2:15pm;Sing.jpg
+Logan;8.00;15;19th December 2016;4:15pm;Logan.jpg
+Moonlight;8.00;15;19th December 2016;6:15pm;Moonlight.jpg
+Get Out;9.00;15;19th December 2016;2:15pm;GetOut.jpg
+Collateral Beauty;8.00;12A;19th December 2016;2:65pm;Beauty.jpg

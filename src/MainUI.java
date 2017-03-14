@@ -64,7 +64,7 @@ public class MainUI extends JFrame {
 
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 579, 444);
+		setBounds(100, 100, 579, 521);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,7 +80,7 @@ public class MainUI extends JFrame {
 		Centralpanel.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 293, 329);
+		panel.setBounds(0, 0, 293, 411);
 		Centralpanel.add(panel);
 		panel.setLayout(null);
 
@@ -119,27 +119,11 @@ public class MainUI extends JFrame {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Ticket Pricing", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(5, 179, 282, 150);
+		panel_2.setBounds(5, 179, 282, 221);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
-		JLabel lblAdults = new JLabel("Adults :");
-		lblAdults.setBounds(10, 24, 46, 14);
-		panel_2.add(lblAdults);
-
-		JLabel labelPricing = new JLabel("\u00A30.00");
-		labelPricing.setForeground(Color.CYAN);
-		labelPricing.setBounds(57, 24, 46, 14);
-		panel_2.add(labelPricing);
-
-		JLabel lblQuantity = new JLabel("Quantity:");
-		lblQuantity.setBounds(123, 24, 65, 14);
-		panel_2.add(lblQuantity);
-
-		JSpinner spinner = new JSpinner();
-
-		spinner.setBounds(198, 21, 39, 20);
-		panel_2.add(spinner);
+		
 
 		JLabel lblSelectATheater = new JLabel("Select a Theater:");
 		lblSelectATheater.setBounds(13, 17, 97, 14);
@@ -151,7 +135,7 @@ public class MainUI extends JFrame {
 
 		JPanel movie_info = new JPanel();
 		movie_info.setBorder(null);
-		movie_info.setBounds(297, 0, 276, 329);
+		movie_info.setBounds(297, 0, 266, 329);
 		Centralpanel.add(movie_info);
 		movie_info.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
@@ -162,11 +146,8 @@ public class MainUI extends JFrame {
 		cmbBxMovieList_1.setEnabled(false);
 		cmbBxMovieDate_1.setEnabled(false);
 		cmbBxMovieTime_1.setEnabled(false);
-		spinner.setEnabled(false);
-
-		JButton btnPlaceOrder = new JButton("Place Order");
-		btnPlaceOrder.setBounds(10, 116, 113, 23);
-		panel_2.add(btnPlaceOrder);
+		//spinner.setEnabled(false);
+		
 		lblImagePic.setText("");
 		cmbBxTheater_1.setModel(new DefaultComboBoxModel<String>(cinemaOperations.displayTheaterName()));
 
@@ -212,7 +193,8 @@ public class MainUI extends JFrame {
 		shoppingCartInfo.setForeground(new Color(0, 0, 255));
 		shoppingCartInfo.setEnabled(false);
 		shoppingCartInfo.setEditable(false);
-		shoppingCartInfo.setText("Huddersfield Cinema");
+		shoppingCartInfo.setText(
+				"---------------------------------\r\nHuddersfield Cinema\r\n---------------------------------\r\n");
 		shoppingCartInfo.setBounds(0, 5, 281, 367);
 		shoppinCart.add(shoppingCartInfo);
 
@@ -229,8 +211,6 @@ public class MainUI extends JFrame {
 		Receipt.setVisible(false);
 		contentPane.add(Receipt, "name_16078647602490");
 		Receipt.setLayout(new BorderLayout(0, 0));
-
-		shoppingCartInfo.setText(shoppingCartInfo.getText() + "\ndreas ");
 
 		cmbBxTheater_1.addActionListener(new ActionListener() {
 
@@ -306,21 +286,84 @@ public class MainUI extends JFrame {
 				}
 			}
 		});
-
+		
+		JButton btnPlaceOrder = new JButton("Place Order");
+		btnPlaceOrder.setBounds(10, 187, 113, 23);
+		
+		
+		panel_2.add(btnPlaceOrder);
+		
+		JPanel childPricePanel = new JPanel();
+		childPricePanel.setLayout(null);
+		childPricePanel.setBounds(10, 54, 259, 34);
+		panel_2.add(childPricePanel);
+		
+		JLabel label = new JLabel("Child : ");
+		label.setToolTipText("12 years and under");
+		label.setForeground(Color.BLACK);
+		label.setBounds(10, 11, 37, 14);
+		childPricePanel.add(label);
+		
+		JSpinner spinnerChild = new JSpinner();
+		spinnerChild.setBounds(207, 8, 29, 20);
+		childPricePanel.add(spinnerChild);
+		
+		JLabel child = new JLabel("\u00A30.00");
+		child.setForeground(Color.BLACK);
+		child.setBounds(57, 8, 37, 20);
+		childPricePanel.add(child);
+		
+		JLabel label_2 = new JLabel("Quantity:");
+		label_2.setBounds(142, 11, 55, 14);
+		childPricePanel.add(label_2);
+		
+		JPanel adultsPricePanel = new JPanel();
+		adultsPricePanel.setBounds(10, 21, 259, 34);
+		panel_2.add(adultsPricePanel);
+		adultsPricePanel.setLayout(null);
+		
+		JLabel lblAdults = new JLabel("Adults :");
+		lblAdults.setBounds(10, 11, 46, 14);
+		adultsPricePanel.add(lblAdults);
+		lblAdults.setForeground(Color.BLACK);
+		
+		JSpinner spinnerAdults = new JSpinner();
+		spinnerAdults.setBounds(207, 8, 29, 20);
+		adultsPricePanel.add(spinnerAdults);
+		
+				JLabel adultslabelPricing = new JLabel("\u00A30.00");
+				adultslabelPricing.setBounds(57, 8, 56, 20);
+				adultsPricePanel.add(adultslabelPricing);
+				adultslabelPricing.setForeground(Color.BLACK);
+				
+						JLabel lblQuantity = new JLabel("Quantity:");
+						lblQuantity.setBounds(142, 11, 55, 14);
+						adultsPricePanel.add(lblQuantity);
+		
 		cmbBxMovieTime_1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
+				panel_2.removeAll();		
+				
 				JComboBox<?> cmbBxMovieTime = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxMovieTime.getSelectedItem();
 
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex())
 						.getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getMovieTime())) {
-					spinner.setModel(new SpinnerNumberModel(0, 0,
-							cinemaOperations.displayAvailableTickets(cmbBxMovieList_1.getSelectedIndex()), 1));
-					spinner.setEnabled(true);
-					labelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieList_1.getSelectedIndex()));
+					spinnerAdults.setModel(new SpinnerNumberModel(0, 0, 9, 1));
+					spinnerAdults.setEnabled(true);
+					//labelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieList_1.getSelectedIndex()));
+					//System.out.println(cinemaOperations.setPrices(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex()).getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getAgeRestrictions()));
+					
+					switch (cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex()).getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getAgeRestrictions()) {
+					case "U":
+						
+						break;
 
+					default:
+						break;
+					}
 				}
 			}
 		});

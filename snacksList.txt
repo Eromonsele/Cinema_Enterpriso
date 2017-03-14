@@ -1,0 +1,6 @@
+Oreos;1.19
+Lemon Cakes;1.19
+Butter Popcorn;1.05
+Caramel Popcorn;1.05
+Chocolate Popcorn;1.05
+Nachos;1.59

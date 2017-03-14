@@ -49,7 +49,7 @@ public class Theater {
 				if ((line = input.nextLine()) != null) {
 					String[] word = line.split(";");
 					String mN = word[0];
-					double mP = Double.parseDouble(word[1]);
+					float mP = Float.parseFloat(word[1]);
 					String aR = word[2];
 					String mD = word[3];
 					String mT = word[4];
