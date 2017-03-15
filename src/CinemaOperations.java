@@ -13,6 +13,8 @@ public class CinemaOperations {
 
 	public CinemaOperations() {
 		theaters = new ArrayList<Theater>();
+		snacks = new ArrayList<Snack>();
+		drinks = new ArrayList<Drink>();
 	}
 
 	/**
@@ -53,7 +55,6 @@ public class CinemaOperations {
 					String[] word = line.split(";");
 					String drinkName = word[0];
 					float drinkPrice = Float.parseFloat(word[1]);
-
 					getDrinks().add(new Drink(drinkName, drinkPrice));
 				}
 			}
