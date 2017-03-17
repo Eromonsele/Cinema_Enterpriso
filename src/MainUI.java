@@ -32,6 +32,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import java.awt.CardLayout;
 import javax.swing.JTextPane;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 public class MainUI extends JFrame {
 
@@ -231,20 +233,22 @@ public class MainUI extends JFrame {
 		JPanel shoppingCartSummary = new JPanel();
 		shoppingCartSummary.setBounds(0, 0, 281, 405);
 		PreCheckOut.add(shoppingCartSummary);
-		shoppingCartSummary.setLayout(new BorderLayout(0, 0));
+		shoppingCartSummary.setLayout(null);
 
 		JPanel shoppinCart = new JPanel();
-		shoppingCartSummary.add(shoppinCart, BorderLayout.CENTER);
+		shoppinCart.setBounds(0, 0, 281, 25);
+		shoppingCartSummary.add(shoppinCart);
 		shoppinCart.setLayout(null);
 
 		JLabel lblShoppingCart = new JLabel("Huddersfield Cinema\r\n");
 		lblShoppingCart.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		lblShoppingCart.setBounds(new Rectangle(0, 0, 100, 100));
-		lblShoppingCart.setBounds(0, 0, 281, 22);
+		lblShoppingCart.setBounds(0, 0, 281, 25);
 		shoppinCart.add(lblShoppingCart);
 
 		JPanel CheckOut = new JPanel();
-		shoppingCartSummary.add(CheckOut, BorderLayout.SOUTH);
+		CheckOut.setBounds(0, 372, 281, 33);
+		shoppingCartSummary.add(CheckOut);
 		CheckOut.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnPayViaCard = new JButton("Pay Via Card");
