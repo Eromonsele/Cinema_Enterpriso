@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.util.Scanner;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
 import java.awt.Component;
@@ -33,7 +35,9 @@ import javax.swing.JButton;
 import java.awt.CardLayout;
 import javax.swing.JTextPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
+import javax.swing.JScrollPane;
 
 public class MainUI extends JFrame {
 
@@ -236,15 +240,21 @@ public class MainUI extends JFrame {
 		shoppingCartSummary.setLayout(null);
 
 		JPanel shoppinCart = new JPanel();
-		shoppinCart.setBounds(0, 0, 281, 25);
+		shoppinCart.setBounds(0, 0, 281, 371);
 		shoppingCartSummary.add(shoppinCart);
 		shoppinCart.setLayout(null);
 
 		JLabel lblShoppingCart = new JLabel("Huddersfield Cinema\r\n");
+		lblShoppingCart.setBounds(0, 0, 281, 17);
 		lblShoppingCart.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblShoppingCart.setBounds(new Rectangle(0, 0, 100, 100));
-		lblShoppingCart.setBounds(0, 0, 281, 25);
 		shoppinCart.add(lblShoppingCart);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 17, 281, 354);
+		shoppinCart.add(scrollPane);
+
+		JList addCartList = new JList();
+		scrollPane.setViewportView(addCartList);
 
 		JPanel CheckOut = new JPanel();
 		CheckOut.setBounds(0, 372, 281, 33);
@@ -288,11 +298,7 @@ public class MainUI extends JFrame {
 
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList.getSelectedIndex())
 						.getMoviesList().get(cmbBxMovieList.getSelectedIndex()).getMovieName())) {
-					cmbBxMovieDate_1.setEnabled(true);
-					cmbBxMovieDate_1.setModel(new DefaultComboBoxModel<String>(
-							new String[] { cinemaOperations.displayMovieDate(cmbBxMovieList.getSelectedIndex()) }));
-					// cmbBxMovieTime_1.setEnabled(true);
-					//
+
 					switch (cmbBxMovieList.getSelectedIndex()) {
 					case 0:
 						lblImagePic.setIcon(new ImageIcon(getClass()
@@ -317,6 +323,30 @@ public class MainUI extends JFrame {
 						lblImagePic.setIcon(new ImageIcon(getClass().getResource("")));
 						break;
 					}
+
+					switch (cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex()).getMoviesList()
+							.get(cmbBxMovieList_1.getSelectedIndex()).getAgeRestrictions()) {
+					case "18":
+					case "R18":
+
+						try {
+							if (cinemaOperations.isOfAge(Integer.parseInt(JOptionPane.showInputDialog(
+									"This movie requires an age check\nPlease enter age:"))) == false) {
+								JOptionPane.showMessageDialog(null, "You are not of age, please try another movie");
+								break;
+							}
+
+						} catch (NumberFormatException e) {
+							JOptionPane.showMessageDialog(null, "Please enter a number");
+						}
+
+					default:
+						cmbBxMovieDate_1.setEnabled(true);
+						cmbBxMovieDate_1.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECT A DATE",
+								cinemaOperations.displayMovieDate(cmbBxMovieList.getSelectedIndex()) }));
+						break;
+					}
+
 				}
 			}
 		});
@@ -331,8 +361,8 @@ public class MainUI extends JFrame {
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex())
 						.getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getMoviePreview())) {
 					cmbBxMovieTime_1.setEnabled(true);
-					cmbBxMovieTime_1.setModel(new DefaultComboBoxModel<String>(
-							new String[] { cinemaOperations.displayMovieTime(cmbBxMovieList_1.getSelectedIndex()) }));
+					cmbBxMovieTime_1.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECT MOVIE TIME",
+							cinemaOperations.displayMovieTime(cmbBxMovieList_1.getSelectedIndex()) }));
 				}
 			}
 		});
@@ -364,6 +394,8 @@ public class MainUI extends JFrame {
 		lblQuantity.setBounds(142, 11, 55, 14);
 		adultsPricePanel.add(lblQuantity);
 
+		btnPlaceOrder.setEnabled(false);
+
 		cmbBxMovieTime_1.addActionListener(new ActionListener() {
 
 			@Override
@@ -374,78 +406,74 @@ public class MainUI extends JFrame {
 
 				if (selected.toString().equals(cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex())
 						.getMoviesList().get(cmbBxMovieList_1.getSelectedIndex()).getMovieTime())) {
+					btnPlaceOrder.setEnabled(true);
 					spinnerAdults.setModel(new SpinnerNumberModel(0, 0, 9, 1));
 					spinnerAdults.setEnabled(true);
 					adultslabelPricing.setText(cinemaOperations.displayMoviePrice(cmbBxMovieList_1.getSelectedIndex()));
 
-					switch (cinemaOperations.getTheaters().get(cmbBxMovieList_1.getSelectedIndex()).getMoviesList()
-							.get(cmbBxMovieList_1.getSelectedIndex()).getAgeRestrictions()) {
-					case "U":
-
-						break;
-
-					default:
-						break;
-					}
 				}
 			}
 		});
 
 		cmbBxDrinksList.setModel(new DefaultComboBoxModel<String>(cinemaOperations.displayDrinks()));
-		
+
 		cmbBxDrinksList.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<?> cmbBxDrinksList = (JComboBox<?>) event.getSource();
 				Object selected = cmbBxDrinksList.getSelectedItem();
-				
-				if(selected.toString().equals(cinemaOperations.getDrinks().get(cmbBxDrinksList.getSelectedIndex()).getDrinkName())){
+
+				if (selected.toString()
+						.equals(cinemaOperations.getDrinks().get(cmbBxDrinksList.getSelectedIndex()).getDrinkName())) {
 					lblDrinksPrice.setText(cinemaOperations.displayDrinkPrice(cmbBxDrinksList.getSelectedIndex()));
 				}
-				
+
 			}
-		});		
+		});
 		cnbBxSnacksList.setModel(new DefaultComboBoxModel<String>(cinemaOperations.displaySnacks()));
-		
+
 		cnbBxSnacksList.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<?> cnbBxSnacksList = (JComboBox<?>) event.getSource();
 				Object selected = cnbBxSnacksList.getSelectedItem();
-				
-				if(selected.toString().equals(cinemaOperations.getSnacks().get(cnbBxSnacksList.getSelectedIndex()).getSnackName())){
+
+				if (selected.toString()
+						.equals(cinemaOperations.getSnacks().get(cnbBxSnacksList.getSelectedIndex()).getSnackName())) {
 					lblSnacksPrice.setText(cinemaOperations.displaySnacksPrice(cnbBxSnacksList.getSelectedIndex()));
 				}
-				
+
 			}
 		});
+		DefaultListModel<String> cartList = new DefaultListModel<String>();
 		btnPlaceOrder.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cinemaApp.setVisible(false);
 				PreCheckOut.setVisible(true);
+
+				cartList.addElement(cmbBxMovieList_1.getSelectedItem().toString());
+				addCartList.setModel(cartList);
 			}
-		});		
-		
+		});
+
 		btnAddCart.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+
 			}
 		});
 		btnAddCart_1.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+
 			}
 		});
-		
+
 	}
 }

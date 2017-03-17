@@ -146,32 +146,16 @@ public class CinemaOperations {
 	public String displayDrinkPrice(int index) {
 		return "£" + getDrinks().get(index).getDrinkPrice();
 	}
-
-	public String setPrices(String filmClassfication) {
-		switch (filmClassfication) {
-		case "U":
-			return "universal";
-		case "PG":
-			return "parental guidance";
-		case "12A":
-			return "under 12";
-		case "15":
-			return "suitable for age 15 and older";
-		case "18":
-			return "suitable for ages for 18 and older";
-		default:
-			return "drop dead";
-
-		}
+	
+	/**
+	 * @param age
+	 * @return
+	 */
+	public boolean isOfAge(int age){
+		return age >= 18;
 	}
-
-	public float calcTickets(int numberOfTickets, float ticketPrice) {
-
-		return ticketPrice * numberOfTickets;
-	}
-
-	public float totalCost(float calcTickets, float calcSnacks) {
-
-		return calcTickets + calcSnacks;
+	
+	public String receiptInfoFormatter(){
+		return String.format("");
 	}
 }
