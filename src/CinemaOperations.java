@@ -5,16 +5,26 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+ * @author Eromonsele Okhilua
+ * @version 1.0.2
+ * @date 11-02-2017
+ */
 public class CinemaOperations {
 
 	private ArrayList<Theater> theaters;
 	private ArrayList<Snack> snacks;
 	private ArrayList<Drink> drinks;
+	private ArrayList<Float> receiptPrices; 
 
+	/**
+	 * 
+	 */
 	public CinemaOperations() {
 		theaters = new ArrayList<Theater>();
 		snacks = new ArrayList<Snack>();
 		drinks = new ArrayList<Drink>();
+		receiptPrices = new ArrayList<Float>();
 	}
 
 	/**
@@ -45,6 +55,9 @@ public class CinemaOperations {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void addDrinks() {
 		try {
 			String line = null;
@@ -64,6 +77,9 @@ public class CinemaOperations {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void addSnacks() {
 		try {
 			String line = null;
@@ -83,6 +99,9 @@ public class CinemaOperations {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public String[] displayTheaterName() {
 		String[] container = new String[theaters.size()];
 		for (int i = 0; i < container.length; i++) {
@@ -91,6 +110,10 @@ public class CinemaOperations {
 		return container;
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String[] displayMovieName(int index) {
 		String[] container = new String[theaters.get(index).getMoviesList().size()];
 		for (int i = 0; i < container.length; i++) {
@@ -99,30 +122,57 @@ public class CinemaOperations {
 		return container;
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayMoviePrice(int index) {
 		return "£" + theaters.get(index).getMoviesList().get(index).getMoviePrice() + 0;
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayAgeRestrictions(int index) {
-		return theaters.get(index).getMoviesList().get(index).getAgeRestrictions();
+		return "Film Rating: " + theaters.get(index).getMoviesList().get(index).getAgeRestrictions();
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayMovieDate(int index) {
 		return theaters.get(index).getMoviesList().get(index).getMoviePreview();
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayMovieTime(int index) {
 		return theaters.get(index).getMoviesList().get(index).getMovieTime();
 	}
 
-	public int displayAvailableTickets(int index) {
-		return theaters.get(index).getMoviesList().get(index).getAvailableTickets();
+	/**
+	 * @param index
+	 * @return
+	 */
+	public String displayAvailableTickets(int index) {
+		return "/" + theaters.get(index).getMoviesList().get(index).getAvailableTickets();
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayMoviePic(int index) {
 		return theaters.get(index).getMoviesList().get(index).getMoviePicture();
 	}
 
+	/**
+	 * @return
+	 */
 	public String[] displaySnacks() {
 		String[] container = new String[getSnacks().size()];
 		for (int i = 0; i < container.length; i++) {
@@ -131,10 +181,17 @@ public class CinemaOperations {
 		return container;
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displaySnacksPrice(int index) {
 		return "£" + getSnacks().get(index).getSnackPrice();
 	}
 
+	/**
+	 * @return
+	 */
 	public String[] displayDrinks() {
 		String[] container = new String[getDrinks().size()];
 		for (int i = 0; i < container.length; i++) {
@@ -143,19 +200,54 @@ public class CinemaOperations {
 		return container;
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
 	public String displayDrinkPrice(int index) {
 		return "£" + getDrinks().get(index).getDrinkPrice();
 	}
-	
+
 	/**
 	 * @param age
 	 * @return
 	 */
-	public boolean isOfAge(int age){
+	public boolean isOfAge(int age) {
 		return age >= 18;
 	}
+
+	/**
+	 * @return
+	 */
+	public String receiptInfoFormatter(String itemName, String itemPrice, String quantity) {
+		return String.format("%-20s            %-12s%10s\n", itemName, quantity, itemPrice);
+	}
 	
-	public String receiptInfoFormatter(){
-		return String.format("");
+	/**
+	 * @param quantity
+	 * @param filmPrice
+	 * @return
+	 */
+	public float totalTickets(int quantity, float filmPrice){
+		return quantity * filmPrice;
+	}
+
+	/**
+	 * @return the receiptPrices
+	 */
+	public ArrayList<Float> getReceiptPrices() {
+		return receiptPrices;
+	}
+	
+	public float calcReceiptItems(){
+		float totalPrice = 0;
+		for (int i = 0; i < getReceiptPrices().size(); i++) {
+			totalPrice += getReceiptPrices().get(i);			
+		}
+		return totalPrice;
+	}
+	
+	public int remainingTickets(int quantity, int availableTickets){
+		return availableTickets - quantity;
 	}
 }

@@ -73,14 +73,23 @@ public class Movie {
 		return movieDate;
 	}	
 
+	/**
+	 * @return
+	 */
 	public String getTheaters() {
 		return theaters;
 	}	
 
+	/**
+	 * @return
+	 */
 	public int getAvailableTickets() {
 		return availableTickets;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getMovieTime() {
 		return movieTime;
 	}

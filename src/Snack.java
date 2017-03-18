@@ -7,6 +7,10 @@ public class Snack {
 	private String snackName;
 	private float snackPrice;
 
+	/**
+	 * @param snackName
+	 * @param snackPrice
+	 */
 	public Snack(String snackName, float snackPrice) {
 		this.snackName = snackName;
 		this.snackPrice = snackPrice;
