@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,8 +16,8 @@ public class CinemaOperations {
 	private ArrayList<Theater> theaters;
 	private ArrayList<Snack> snacks;
 	private ArrayList<Drink> drinks;
-	private ArrayList<Float> receiptPrices; 
-
+	private ArrayList<Float> receiptPrices;
+	
 	/**
 	 * 
 	 */
@@ -127,7 +128,7 @@ public class CinemaOperations {
 	 * @return
 	 */
 	public String displayMoviePrice(int index) {
-		return "£" + theaters.get(index).getMoviesList().get(index).getMoviePrice() + 0;
+		return "ï¿½" + String.format("%.2f",theaters.get(index).getMoviesList().get(index).getMoviePrice());
 	}
 
 	/**
@@ -186,7 +187,7 @@ public class CinemaOperations {
 	 * @return
 	 */
 	public String displaySnacksPrice(int index) {
-		return "£" + getSnacks().get(index).getSnackPrice();
+		return "ï¿½" + String.format("%.2f",getSnacks().get(index).getSnackPrice());
 	}
 
 	/**
@@ -205,7 +206,7 @@ public class CinemaOperations {
 	 * @return
 	 */
 	public String displayDrinkPrice(int index) {
-		return "£" + getDrinks().get(index).getDrinkPrice();
+		return "ï¿½" + String.format("%.2f",getDrinks().get(index).getDrinkPrice());
 	}
 
 	/**
@@ -239,12 +240,12 @@ public class CinemaOperations {
 		return receiptPrices;
 	}
 	
-	public float calcReceiptItems(){
+	public String calcReceiptItems(){
 		float totalPrice = 0;
 		for (int i = 0; i < getReceiptPrices().size(); i++) {
 			totalPrice += getReceiptPrices().get(i);			
 		}
-		return totalPrice;
+		return String.format("%.2f",totalPrice);
 	}
 	
 	public int remainingTickets(int quantity, int availableTickets){

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -543,7 +544,7 @@ public class MainUI extends JFrame {
 				PreCheckOut.setVisible(false);
 				CheckOutByCard.setVisible(true);
 
-				lblCardTotalSummary.setText("£" + cinemaOperations.calcReceiptItems());
+				lblCardTotalSummary.setText("ï¿½" + cinemaOperations.calcReceiptItems());
 				lblCardCartSummaryItemNumber.setText("" + cartList.size());
 
 			}
@@ -725,7 +726,7 @@ public class MainUI extends JFrame {
 							Integer.parseInt(spinnerAdults.getValue().toString()),
 							cinemaOperations.getTheaters().get(0).getMoviesList().get(0).getMoviePrice());
 
-					String itemPrice = "£" + itemPriceD;
+					String itemPrice = "ï¿½" + String.format("%.2f",itemPriceD);
 					cartList.addElement(
 							cinemaOperations.receiptInfoFormatter(cmbBxMovieList_1.getSelectedItem().toString(),
 									itemPrice, spinnerAdults.getValue().toString()));
@@ -774,7 +775,7 @@ public class MainUI extends JFrame {
 
 		btnWaiterService.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cartList.addElement(cinemaOperations.receiptInfoFormatter("Waiter Service", "£5.00", "1"));
+				cartList.addElement(cinemaOperations.receiptInfoFormatter("Waiter Service", "ï¿½5.00", "1"));
 				addCartList.setModel(cartList);
 				cinemaOperations.getReceiptPrices().add(5.0f);
 			}
@@ -808,6 +809,7 @@ public class MainUI extends JFrame {
 
 	}
 
+	
 	public void buttonsEnabled() {
 		if (cartList.isEmpty()) {
 			btnRemoveFromCart.setEnabled(false);
