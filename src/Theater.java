@@ -5,16 +5,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
+/**
+ * Stores details
  * 
  * @author Eromonsele Okhilua
- * @version	1.0.2 * 
+ * @version 1.0.2 *
  */
 public class Theater {
+	// The theater's name.
 	private String theaterName;
+	// The number of seats at this theater.
 	private int theaterSeats;
+	// A list
 	private ArrayList<Movie> moviesList;
 
+	/**
+	 * Construct for objects of class theater.
+	 * 
+	 * @param theaterName
+	 *            The theater's name.
+	 * @param theaterSeats
+	 *            The number of seats at the theater.
+	 */
 	public Theater(String theaterName, int theaterSeats) {
 		this.theaterName = theaterName;
 		this.theaterSeats = theaterSeats;
@@ -22,23 +34,35 @@ public class Theater {
 	}
 
 	/**
-	 * @return the moviesList
+	 * Return the list of movies.
+	 * 
+	 * @return the moviesList.
 	 */
 	public ArrayList<Movie> getMoviesList() {
 		return moviesList;
 	}
 
 	/**
-	 * @return the theaterName
+	 * Return the theater's name.
+	 * 
+	 * @return the theaterName.
 	 */
 	public String getTheaterName() {
 		return theaterName;
 	}
 
+	/**
+	 * Return the theater's seat.
+	 * 
+	 * @return the theaterSeats.
+	 */
 	public int getTheaterSeats() {
 		return theaterSeats;
 	}
 
+	/**
+	 * 
+	 */
 	public void addMovies() {
 
 		try {
@@ -54,11 +78,10 @@ public class Theater {
 					String mD = word[3];
 					String mT = word[4];
 					String moviePic = word[5];
-					String theatre = theaterName;
 					int aT = theaterSeats;
 
-					getMoviesList().add(new Movie(moviePic,mN, mP, aR, mD, mT, theatre, aT));
-					
+					getMoviesList().add(new Movie(moviePic, mN, mP, aR, mD, mT, aT));
+
 				}
 			}
 

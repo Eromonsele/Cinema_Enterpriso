@@ -20,27 +20,40 @@ public class Movie {
 	private String ageRestrictions;
 	private String movieDate;
 	private String movieTime;
-	private String theaters;
 	private int availableTickets;
 	private String moviePicture;
 
-	/*
-	 * Initialize the movie object
+	/**
+	 * Constructor for objects of class Movie.
+	 * 
+	 * @param moviePicture
+	 *            The movie's poster.
+	 * @param movieName
+	 *            The movie's name.
+	 * @param moviePrice
+	 *            The movie's price.
+	 * @param ageRestrictions
+	 *            The movie's film rating.
+	 * @param movieDate
+	 *            The movie's viewing date.
+	 * @param movieTime
+	 *            The movies's viewing time.
+	 * @param availableTickets
 	 */
-	public Movie(String moviePicture,String movieName, float moviePrice, String ageRestrictions, String movieDate, String movieTime, String theaters,int availableTickets) {
+	public Movie(String moviePicture, String movieName, float moviePrice, String ageRestrictions, String movieDate,
+			String movieTime, int availableTickets) {
 		this.movieName = movieName;
 		this.moviePrice = moviePrice;
 		this.ageRestrictions = ageRestrictions;
 		this.movieDate = movieDate;
 		this.movieTime = movieTime;
 		this.availableTickets = availableTickets;
-		this.theaters = theaters;
 		this.moviePicture = moviePicture;
-		
+
 	}
 
 	/**
-	 * Gets the price for the movie
+	 * Return the price for the movie
 	 * 
 	 * @return the moviePrice
 	 */
@@ -49,7 +62,7 @@ public class Movie {
 	}
 
 	/**
-	 * Gets the name of the movie
+	 * Return the name of the movie
 	 * 
 	 * @return the movieName
 	 */
@@ -71,14 +84,7 @@ public class Movie {
 	 */
 	public String getMoviePreview() {
 		return movieDate;
-	}	
-
-	/**
-	 * @return
-	 */
-	public String getTheaters() {
-		return theaters;
-	}	
+	}
 
 	/**
 	 * @return
@@ -100,5 +106,5 @@ public class Movie {
 	public String getMoviePicture() {
 		return moviePicture;
 	}
-	
+
 }
